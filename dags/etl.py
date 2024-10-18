@@ -90,5 +90,11 @@ with DAG(
 
 
     ##step 6: define the task dependencies
-
+    ###extract
+    create_table() >> extract_apod ## ensure the data is created before extraction
+    api_response=extract_apod.output 
+    ### tarnsform
+    transformed_data=transform_apod_data(api_response)
+    ### load
+    load_data_to_postgres(transformed_data)
 
