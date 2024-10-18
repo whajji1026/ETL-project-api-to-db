@@ -47,7 +47,7 @@ with DAG(
         endpoint='planetary/apod', ## nasa endpoint
         method='GET',
         data={"api_key":"{{conn.nasa_api.extra_dejson.api_key}}"}, ## use api key from connection
-        response_filter=lambda response:response.jason(), ## convert response to json
+        response_filter=lambda response: response.json(), ## convert response to json
     )
 
     ## step 3: transform the data (pick the info that i need to save)
@@ -86,7 +86,7 @@ with DAG(
         
 
 
-    ## step 5 : verify the DBViewer
+    ## step 5 : verify the DBeaver
 
 
     ##step 6: define the task dependencies
