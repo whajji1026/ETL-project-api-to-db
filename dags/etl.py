@@ -23,11 +23,18 @@ with DAG(
 
         ## SQL query to create the table
         create_table_query="""
-
-
-
+        CREATE TABLE IF NOT EXISTS apod_data (
+            id SERIAL PRIMARY KEY,
+            title VARCHAR(255),
+            explanation TEXT,
+            url TEXT,
+            date DATE,
+            media_type VARCHAR(50)
+        );
         """
 
+        ## execute the table creation query
+        postgres_hook.run(create_table_query)
 
 
 
